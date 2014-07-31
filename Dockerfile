@@ -34,6 +34,9 @@ RUN babel update
 # Install mercurial (dependency for some Babel packages)
 RUN apt-get install -y mercurial
 
+# Install Git
+RUN apt-get install -y git
+
 # Integration tests
 ADD test /tmp/test
 RUN bats /tmp/test
