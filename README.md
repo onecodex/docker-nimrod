@@ -1,6 +1,6 @@
 # refgenomics/docker-mg
 
-[![Docker Repository on Quay.io](https://quay.io/repository/refgenomics/docker-mg/status?token=47bfa0b2-6156-4f4f-af3f-49b97ca475b9)](https://quay.io/repository/refgenomics/docker-mg)
+[![Docker Repository on Quay.io](https://quay.io/repository/refgenomics/docker-nimrod/status?token=4f8dc19c-22b0-45c1-b2bd-b15eac01937c "Docker Repository on Quay.io")](https://quay.io/repository/refgenomics/docker-nimrod)
 
 Ubuntu base image with security patches, git, [Bats](https://github.com/sstephenson/bats), and [Nimrod](https://github.com/Araq/Nimrod).
 
