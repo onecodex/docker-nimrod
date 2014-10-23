@@ -2,7 +2,7 @@
 
 [![Docker Repository on Quay.io](https://quay.io/repository/refgenomics/docker-nimrod/status?token=4f8dc19c-22b0-45c1-b2bd-b15eac01937c "Docker Repository on Quay.io")](https://quay.io/repository/refgenomics/docker-nimrod)
 
-Ubuntu base image with security patches, git, [Bats](https://github.com/sstephenson/bats), and [Nimrod](https://github.com/Araq/Nimrod).
+Ubuntu base image with security patches, git, [Bats](https://github.com/sstephenson/bats), and [Nim](https://github.com/Araq/Nimrod).
 
 ## Installation and Usage
 
@@ -14,7 +14,7 @@ Ubuntu base image with security patches, git, [Bats](https://github.com/sstephen
 * `bats`: The [Bats](https://github.com/sstephenson/bats) Bash Automated Testing System
 * `git`: Git Version Control System.
 * All Ubuntu LTS security updates (but not non-critical updates).
-* Development version of Nimrod - tagged v0.9.5d for development
+* Development version of Nim - tagged v0.10.0d for development
 
 ## Tests
 

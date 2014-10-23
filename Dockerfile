@@ -2,34 +2,35 @@ FROM quay.io/refgenomics/docker-ubuntu:14.04
 
 MAINTAINER Nick Greenfield <nick@refgenomics.com>
 
-# Install Nimrod
-RUN mkdir /root/nimrod/ && mkdir /root/nimrod-deprecated/
+# Install Nim (v0.10 devel, near release)
+RUN mkdir /root/nim/
 RUN \
-	cd /root/nimrod/ && \
+	cd /root/nim/ && \
 	git clone https://github.com/Araq/Nimrod.git && \
 	cd Nimrod && \
-	git checkout ba394e6d3649839d73c5ae3a12e6f1ff6d66e802
+	git checkout 201d3c9ed0dac94a337f23416c556b45f7fc1138
 RUN \
-	cd /root/nimrod/Nimrod && \
-	git clone --depth 1 git://github.com/nimrod-code/csources && \
+	cd /root/nim/Nimrod && \
+	git clone -b bigbreak --depth 1 git://github.com/nimrod-code/csources && \
 	cd csources && \
+	git checkout b0bcf88e26730b23d22e2663adf1babb05bd5a71 && \
 	sh build.sh && \
 	cd .. && \
 	bin/nimrod c koch && \
 	./koch boot -d:release
-RUN ln -s /root/nimrod/Nimrod/bin/nimrod /usr/local/bin/nimrod
+RUN ln -s /root/nim/Nimrod/bin/nim /usr/local/bin/nim
 
-# Install Babel (Nimrod package manager)
+# Install Nimble (Nim package manager)
 RUN \
-	cd /root/nimrod/ && \
-	git clone https://github.com/nimrod-code/babel.git && \
-	cd babel && \
-	git checkout d30928a97ed3bf957c2e2c15c37174854d38b7e3
+	cd /root/nim/ && \
+	git clone https://github.com/nimrod-code/nimble.git && \
+	cd nimble && \
+	git checkout ecd78e0e0300a8178db320d83014d3eb47a89b4c
 RUN \
-	cd /root/nimrod/babel && \
-	nimrod c -r src/babel install
-RUN ln -s /.babel/bin/babel /usr/local/bin/babel
-RUN babel update
+	cd /root/nim/nimble && \
+	nim c -r src/nimble install
+RUN ln -s /.nimble/bin/nimble /usr/local/bin/nimble
+RUN nimble update
 
 # Install mercurial (dependency for some Babel packages)
 RUN apt-get install -y mercurial

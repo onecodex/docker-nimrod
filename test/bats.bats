@@ -13,7 +13,12 @@
 	[[ $V == Python\ 2.7* ]]
 }
 
-@test "Test for Nimrod v0.9.5" {
-	N=$(nimrod --version)
-	[[ $N == *Version\ 0.9.5* ]]
+@test "Test for Nim v0.10.0" {
+	N=$(nim --version)
+	[[ $N == *Version\ 0.10.0* ]]
+}
+
+@test "Test for Nimble (ex-Babel)" {
+    NIMBLE=$(nimble --version)
+    [[ $NIMBLE == *v0.4.0* ]]
 }
