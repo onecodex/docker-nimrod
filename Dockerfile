@@ -8,7 +8,7 @@ RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/Araq/Nimrod.git && \
 	cd Nimrod && \
-	git checkout 201d3c9ed0dac94a337f23416c556b45f7fc1138
+	git checkout b4b7572e789eaf5402e1809ffe9e268e56715f9c
 RUN \
 	cd /root/nim/Nimrod && \
 	git clone -b bigbreak --depth 1 git://github.com/nimrod-code/csources && \
