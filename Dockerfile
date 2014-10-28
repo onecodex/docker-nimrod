@@ -8,35 +8,35 @@ RUN apt-get install -y git
 # Install mercurial (dependency for some Babel packages)
 RUN apt-get install -y mercurial
 
-# Install Nim (v0.10 devel, near release)
+# Install Nim (v0.9.6 with patch, near v0.9.8 release)
 RUN mkdir /root/nim/
 RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/Araq/Nimrod.git && \
 	cd Nimrod && \
-	git checkout b4b7572e789eaf5402e1809ffe9e268e56715f9c
+	git checkout d5b94390dcfe61c645b43305e3673b6c696b39c7
 RUN \
 	cd /root/nim/Nimrod && \
-	git clone -b bigbreak --depth 1 git://github.com/nimrod-code/csources && \
+	git clone --depth 1 git://github.com/nimrod-code/csources && \
 	cd csources && \
-	git checkout b0bcf88e26730b23d22e2663adf1babb05bd5a71 && \
+	git checkout ddcc0f31f02d9ea5fe1e54e4fb20b8e185988d75 && \
 	sh build.sh && \
 	cd .. && \
 	bin/nimrod c koch && \
 	./koch boot -d:release
-RUN ln -s /root/nim/Nimrod/bin/nim /usr/local/bin/nim
+RUN ln -s /root/nim/Nimrod/bin/nimrod /usr/local/bin/nimrod && ln -s /root/nim/Nimrod/bin/nimrod /usr/local/bin/nim
 
 # Install Nimble (Nim package manager)
 RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/nimrod-code/nimble.git && \
 	cd nimble && \
-	git checkout ecd78e0e0300a8178db320d83014d3eb47a89b4c
+	git checkout v0.4
 RUN \
 	cd /root/nim/nimble && \
-	nim c -r src/nimble install
-RUN ln -s /root/.nimble/bin/nimble /usr/local/bin/nimble
-RUN nimble update
+	nimrod c -r src/babel install
+RUN ln -s /root/.babel/bin/babel /usr/local/bin/babel
+RUN babel update
 
 # Integration tests
 ADD test /tmp/test
