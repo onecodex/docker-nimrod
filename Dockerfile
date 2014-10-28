@@ -2,6 +2,12 @@ FROM quay.io/refgenomics/docker-ubuntu:14.04
 
 MAINTAINER Nick Greenfield <nick@refgenomics.com>
 
+# Install Git
+RUN apt-get install -y git
+
+# Install mercurial (dependency for some Babel packages)
+RUN apt-get install -y mercurial
+
 # Install Nim (v0.10 devel, near release)
 RUN mkdir /root/nim/
 RUN \
@@ -29,14 +35,8 @@ RUN \
 RUN \
 	cd /root/nim/nimble && \
 	nim c -r src/nimble install
-RUN ln -s /.nimble/bin/nimble /usr/local/bin/nimble
+RUN ln -s /root/.nimble/bin/nimble /usr/local/bin/nimble
 RUN nimble update
-
-# Install mercurial (dependency for some Babel packages)
-RUN apt-get install -y mercurial
-
-# Install Git
-RUN apt-get install -y git
 
 # Integration tests
 ADD test /tmp/test
