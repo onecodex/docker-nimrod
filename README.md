@@ -1,4 +1,4 @@
-# refgenomics/docker-mg
+# refgenomics/docker-nimrod
 
 [![Docker Repository on Quay.io](https://quay.io/repository/refgenomics/docker-nimrod/status?token=4f8dc19c-22b0-45c1-b2bd-b15eac01937c "Docker Repository on Quay.io")](https://quay.io/repository/refgenomics/docker-nimrod)
 
