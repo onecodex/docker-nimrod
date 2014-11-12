@@ -14,24 +14,24 @@ RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/Araq/Nimrod.git && \
 	cd Nimrod && \
-	git checkout b4b7572e789eaf5402e1809ffe9e268e56715f9c
+	git checkout 2d43fcafe0cedd4f78611dddccc31e1bef432aab
 RUN \
 	cd /root/nim/Nimrod && \
-	git clone -b bigbreak --depth 1 git://github.com/nimrod-code/csources && \
+	git clone --depth 1 git://github.com/nim-lang/csources && \
 	cd csources && \
-	git checkout b0bcf88e26730b23d22e2663adf1babb05bd5a71 && \
+	git checkout 2c54ca57bf15b810e944a0ea35a6296d1482f7b6 && \
 	sh build.sh && \
 	cd .. && \
-	bin/nimrod c koch && \
+	bin/nim c koch && \
 	./koch boot -d:release
 RUN ln -s /root/nim/Nimrod/bin/nim /usr/local/bin/nim
 
 # Install Nimble (Nim package manager)
 RUN \
 	cd /root/nim/ && \
-	git clone https://github.com/nimrod-code/nimble.git && \
+	git clone https://github.com/nim-lang/nimble.git && \
 	cd nimble && \
-	git checkout ecd78e0e0300a8178db320d83014d3eb47a89b4c
+	git checkout b208b6674960f696226a8c480bb0f5b1f227433a
 RUN \
 	cd /root/nim/nimble && \
 	nim c -r src/nimble install
