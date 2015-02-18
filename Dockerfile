@@ -12,26 +12,26 @@ RUN apt-get install -y mercurial
 RUN mkdir /root/nim/
 RUN \
 	cd /root/nim/ && \
-	git clone https://github.com/Araq/Nimrod.git && \
-	cd Nimrod && \
-	git checkout 2d43fcafe0cedd4f78611dddccc31e1bef432aab
+	git clone -b master https://github.com/Araq/Nim.git && \
+	cd Nim && \
+	git checkout 92c873154a36d34ff8e18de6b2d1a0eb1b611860
 RUN \
-	cd /root/nim/Nimrod && \
-	git clone --depth 1 git://github.com/nim-lang/csources && \
+	cd /root/nim/Nim && \
+	git clone -b master --depth 1 git://github.com/nim-lang/csources && \
 	cd csources && \
-	git checkout 2c54ca57bf15b810e944a0ea35a6296d1482f7b6 && \
+	git checkout 96a5b7fe23eb1964f2e68e455f14246b390b9507 && \
 	sh build.sh && \
 	cd .. && \
 	bin/nim c koch && \
 	./koch boot -d:release
-RUN ln -s /root/nim/Nimrod/bin/nim /usr/local/bin/nim
+RUN ln -s /root/nim/Nim/bin/nim /usr/local/bin/nim
 
-# Install Nimble (Nim package manager)
+# Install Nimble (Nim package manager, v0.6)
 RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/nim-lang/nimble.git && \
 	cd nimble && \
-	git checkout b208b6674960f696226a8c480bb0f5b1f227433a
+	git checkout 875786d34fc4e342eb2fdc849d6d84718c615e84
 RUN \
 	cd /root/nim/nimble && \
 	nim c -r src/nimble install
