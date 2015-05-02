@@ -8,30 +8,30 @@ RUN apt-get install -y git
 # Install mercurial (dependency for some Babel packages)
 RUN apt-get install -y mercurial
 
-# Install Nim (v0.10 devel, near release)
+# Install Nim (v0.11 release)
 RUN mkdir /root/nim/
 RUN \
 	cd /root/nim/ && \
 	git clone -b master https://github.com/Araq/Nim.git && \
 	cd Nim && \
-	git checkout 92c873154a36d34ff8e18de6b2d1a0eb1b611860
+	git checkout 0be654efe11311fcf1200c0e7dba9ecd55fa5591
 RUN \
 	cd /root/nim/Nim && \
 	git clone -b master --depth 1 git://github.com/nim-lang/csources && \
 	cd csources && \
-	git checkout 96a5b7fe23eb1964f2e68e455f14246b390b9507 && \
+	git checkout 15724e2e1f3e7749d508dfcd995e84fea2850802 && \
 	sh build.sh && \
 	cd .. && \
 	bin/nim c koch && \
 	./koch boot -d:release
 RUN ln -s /root/nim/Nim/bin/nim /usr/local/bin/nim
 
-# Install Nimble (Nim package manager, v0.6)
+# Install Nimble (Nim package manager, v0.6+)
 RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/nim-lang/nimble.git && \
 	cd nimble && \
-	git checkout 875786d34fc4e342eb2fdc849d6d84718c615e84
+	git checkout f7114ca7884d75d1ffc0f2c6e07d8c9a904ebab2
 RUN \
 	cd /root/nim/nimble && \
 	nim c -r src/nimble install
