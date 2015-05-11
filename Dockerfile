@@ -8,13 +8,13 @@ RUN apt-get install -y git
 # Install mercurial (dependency for some Babel packages)
 RUN apt-get install -y mercurial
 
-# Install Nim (v0.11 release)
+# Install Nim (v0.11.2 release)
 RUN mkdir /root/nim/
 RUN \
 	cd /root/nim/ && \
 	git clone -b master https://github.com/Araq/Nim.git && \
 	cd Nim && \
-	git checkout 0be654efe11311fcf1200c0e7dba9ecd55fa5591
+	git checkout 45b6082c12dd6fc90a3dd3ca97e1ba157c3d6464
 RUN \
 	cd /root/nim/Nim && \
 	git clone -b master --depth 1 git://github.com/nim-lang/csources && \
