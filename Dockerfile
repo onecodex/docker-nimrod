@@ -2,19 +2,22 @@ FROM quay.io/refgenomics/docker-ubuntu:14.04
 
 MAINTAINER Nick Greenfield <nick@refgenomics.com>
 
+# Update
+RUN apt-get update -y
+
 # Install Git
 RUN apt-get install -y git
 
 # Install mercurial (dependency for some Babel packages)
 RUN apt-get install -y mercurial
 
-# Install Nim (v0.11.2 release)
+# Install Nim (v0.12.0 release)
 RUN mkdir /root/nim/
 RUN \
 	cd /root/nim/ && \
 	git clone -b master https://github.com/Araq/Nim.git && \
 	cd Nim && \
-	git checkout 45b6082c12dd6fc90a3dd3ca97e1ba157c3d6464
+	git checkout 30cc353831a9727cfc6b4e7c379d9920b7041059
 RUN \
 	cd /root/nim/Nim && \
 	git clone -b master --depth 1 git://github.com/nim-lang/csources && \
@@ -31,7 +34,7 @@ RUN \
 	cd /root/nim/ && \
 	git clone https://github.com/nim-lang/nimble.git && \
 	cd nimble && \
-	git checkout f7114ca7884d75d1ffc0f2c6e07d8c9a904ebab2
+	git checkout ffbd5f5b3ec85a68e179233275ff4ef54cc280a3
 RUN \
 	cd /root/nim/nimble && \
 	nim c -r src/nimble install

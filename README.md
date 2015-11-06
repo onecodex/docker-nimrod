@@ -14,7 +14,7 @@ Ubuntu base image with security patches, git, [Bats](https://github.com/sstephen
 * `bats`: The [Bats](https://github.com/sstephenson/bats) Bash Automated Testing System
 * `git`: Git Version Control System.
 * All Ubuntu LTS security updates (but not non-critical updates).
-* Nim v0.11
+* Nim v0.12
 
 ## Tests
 
@@ -30,4 +30,4 @@ To push the Docker image to Quay, run the following command:
 
 ## Copyright and License
 
-Copyright (c) 2014 [Reference Genomics](https://www.refgenomics.com), [Nick Greenfield](https://github.com/boydgreenfield), and contributors.
+Copyright (c) 2014-2015 [Reference Genomics](https://www.refgenomics.com), [Nick Greenfield](https://github.com/boydgreenfield), and contributors.
