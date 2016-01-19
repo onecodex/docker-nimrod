@@ -14,7 +14,7 @@ Ubuntu base image with security patches, git, [Bats](https://github.com/sstephen
 * `bats`: The [Bats](https://github.com/sstephenson/bats) Bash Automated Testing System
 * `git`: Git Version Control System.
 * All Ubuntu LTS security updates (but not non-critical updates).
-* Nim v0.12
+* Nim v0.13
 
 ## Tests
 
